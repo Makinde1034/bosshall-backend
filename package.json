@@ -1,0 +1,22 @@
+{
+  "name": "react-vid-backend",
+  "version": "1.0.0",
+  "description": "Backend sevice for video streaming platform",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Makinde Tolu",
+  "license": "ISC",
+  "dependencies": {
+    "cloudinary": "^1.28.1",
+    "colors": "^1.4.0",
+    "cors": "^2.8.5",
+    "dotenv": "^14.2.0",
+    "express": "^4.17.2",
+    "express-fileupload": "^1.2.1",
+    "mongoose": "^6.1.7",
+    "multer": "^1.4.4",
+    "nodemon": "^2.0.15"
+  }
+}
