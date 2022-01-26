@@ -36,7 +36,7 @@ mongoose.connect(uri).then(()=>{
 })
 
 
-
+ 
 const multer = Multer({
     storage: Multer.MemoryStorage,
     fileSize: 8 * 1024 * 1024 // max file size 8MB
@@ -57,7 +57,3 @@ app.post('/upload', multer.single("avatar"), (req,res)=>{
     }) 
     // console.log(req.files) 
 })              
-
-app.get("/get",(req,res)=>{
-    res.json("fjfjf fjfj")
-})

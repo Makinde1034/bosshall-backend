@@ -5,4 +5,4 @@ class errorResponse{
     }
 }
 
-module.exports = errorResponse
+module.exports = errorResponse 
