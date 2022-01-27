@@ -10,6 +10,8 @@ const videoModel = require("./models/videoModel.js");
 const path = require("path")
 const bcrypt = require("bcrypt")
 const authRoute = require("./routes/userRoute.js")
+const channelRoute = require("./routes/channelRoute.js")
+
 require("dotenv").config();
 
 
@@ -21,7 +23,8 @@ const app = express()
 app.use(cors())
 app.use(express.json({limit:"50mb"}))
 app.use(express.urlencoded({limit:"50mb",extended : true}));
-app.use(authRoute)
+app.use(authRoute);
+app.use(channelRoute);
 
 const port = process.env.PORT
 
@@ -37,7 +40,7 @@ mongoose.connect(uri).then(()=>{
 
 
  
-const multer = Multer({
+const multer = Multer({ 
     storage: Multer.MemoryStorage,
     fileSize: 8 * 1024 * 1024 // max file size 8MB
     
@@ -45,15 +48,16 @@ const multer = Multer({
 
 
 
-app.post('/upload', multer.single("avatar"), (req,res)=>{
-    // console.log(req.body.data)
-    return uploads(req.body.data).then((result)=>{ 
-        videoModel.create({
-            name : "latest video",
-            url : result.url
-        }).then((newData)=>{
-            console.log(newData);
-        })
-    }) 
-    // console.log(req.files) 
-})              
+// app.post('/upload', (req,res)=>{
+//     console.log(req.body.name) 
+//     return uploads(req.body.data).then((result)=>{ 
+//         videoModel.create({ 
+//             name : "latest video",
+//             url : result.url 
+//         }).then((newData)=>{ 
+//             console.log(newData);  
+//         }) 
+//     }) 
+//     console.log(req.files)    
+// })               
+ 

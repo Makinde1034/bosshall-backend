@@ -14,6 +14,8 @@ exports.verifyAccess = (req,res,next) =>{
         }
 
         req.user_id = decoded.user_id
-        res.json(decoded)
+        next()
     })
+
+    
 }      
