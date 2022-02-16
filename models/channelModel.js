@@ -9,9 +9,18 @@ const channelSchema = new Schema({
     about : {
         type : String
     },
-    videos : {
-
+    address : {
+        type : String
     },
+    websiteLink : {
+        type : String
+    },
+    videos :[
+        {
+            type : mongoose.Schema.Types.ObjectId,
+            ref : "videoSchema"
+        }
+    ],
     image : {
         type : String
     },

@@ -11,6 +11,8 @@ const path = require("path")
 const bcrypt = require("bcrypt")
 const authRoute = require("./routes/userRoute.js")
 const channelRoute = require("./routes/channelRoute.js")
+const videoRoute = require("./routes/videoRoute")
+const subscriptionRoute = require("./routes/subscriptionRoute")
 
 require("dotenv").config();
 
@@ -25,6 +27,8 @@ app.use(express.json({limit:"50mb"}))
 app.use(express.urlencoded({limit:"50mb",extended : true}));
 app.use(authRoute);
 app.use(channelRoute);
+app.use(videoRoute);
+app.use(subscriptionRoute)
 
 const port = process.env.PORT
 

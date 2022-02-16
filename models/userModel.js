@@ -11,12 +11,15 @@ const userSchema = new Schema({
         type : String,
         required : true
     },
-    channels : {
-
-    },
+    channels :[
+        {
+            type : mongoose.Schema.Types.ObjectId,
+            ref : "channel"
+        }
+    ],
     country : {
         type : String,
-        required : true
+        
     },
     address : {
         type : String,
@@ -29,6 +32,12 @@ const userSchema = new Schema({
         type : String
     },
     headline : {
+        type : String
+    },
+    userImage : {
+        type : String
+    },
+    banner : {
         type : String
     }
 })
