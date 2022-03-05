@@ -22,7 +22,8 @@ exports.createSubscription = async (req,res,next) =>{
         subscriberId : req.user_id
     })
 
-    if(subscriptionExists){
+    if(subscriptionExists){ 
+
         await subscriptionExists.remove();
         return res.status(200).json({success : true })
     }

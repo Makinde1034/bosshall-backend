@@ -10,9 +10,14 @@ exports.uploadVideo = async (req,res,next) =>{
     }
     console.log(uploadedVideo)
 
+    const chan = await channel.findById({_id : req.body.channelId})
+
     const newVideo = await video.create({
         title : req.body.title,
-        url : uploadedVideo.url
+        url : uploadedVideo.url,
+        channelId : req.body.channelId,
+        channelImage : chan.image,
+        channelName : chan.name
     })
 
     if(newVideo){
@@ -29,10 +34,36 @@ exports.uploadVideo = async (req,res,next) =>{
 
          
     }
-
     
+}  
 
-   
+// @desc get random videos
+// @dest api/get-random-videos
+// @accss public
 
-    
-} 
+exports.getRandomVideos = async (req, res, next) => {
+
+    const videos = await video.aggregate(
+        [ 
+            { $sample: { size: 6 } } 
+        ]
+    )
+
+    res.status(200).json({
+        videos
+    })
+}                                                                   
+
+
+// @desc get specific video
+// @dest api/get-video/:_id
+// @access public
+
+exports.getVideo = async (req,res,next) =>{
+    const vid = await video.findById({_id : req.params.id});
+
+    res.status(200).json({
+        vid
+    })
+
+}

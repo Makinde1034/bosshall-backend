@@ -25,7 +25,7 @@ exports.register = async (req,res,next) =>{
         process.env.ACCESS_TOKEN,
         {expiresIn : "2hr"}
     )
-
+ 
     res.status(200).json({
         accessToken,
         newUser

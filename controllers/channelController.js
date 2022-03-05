@@ -53,7 +53,7 @@ exports.getChannelvideos = (req,res,next) =>{
     channel.findById(req.params.id).populate("videos").then((result)=>{
         res.status(200).json(result)
     })
-} 
+}  
 
 // desc get a users channels
 // dest GET api/get-user-channels
@@ -62,3 +62,22 @@ exports.getUserChannels =(req,res,next) =>{
         res.status(200).json(result)
     })
 }
+
+// desc  get random channels
+// dest GET api/get-random-channels
+
+exports.getRandomChannels = async(req, res, next) =>{               
+    const randomChannels = await channel.aggregate(
+        [
+            {
+                $sample : { size : 6 }
+            }
+        ]
+    )
+
+    res.status(200).json({
+        randomChannels
+    })
+}
+
+ 

@@ -13,6 +13,7 @@ const authRoute = require("./routes/userRoute.js")
 const channelRoute = require("./routes/channelRoute.js")
 const videoRoute = require("./routes/videoRoute")
 const subscriptionRoute = require("./routes/subscriptionRoute")
+const commentRoute = require("./routes/commentRoute")
 
 require("dotenv").config();
 
@@ -28,13 +29,14 @@ app.use(express.urlencoded({limit:"50mb",extended : true}));
 app.use(authRoute);
 app.use(channelRoute);
 app.use(videoRoute);
-app.use(subscriptionRoute)
+app.use(subscriptionRoute);
+app.use(commentRoute);
 
 const port = process.env.PORT
 
-
+ 
 mongoose.connect(uri).then(()=>{
-    console.log('Connected to Mongodb'.rainbow)  
+    console.log('Connected to Mongodb'.rainbow)   
     app.listen(port,()=>{
         console.log(`Listening on port ${port}`.brightYellow)      
     })
