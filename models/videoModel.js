@@ -6,7 +6,8 @@ const videoSchema = new Schema({
 
     title:{
 
-        type : String
+        type : String,
+        text: true 
     },
     url :{
         
@@ -16,16 +17,31 @@ const videoSchema = new Schema({
         type : Number,
         default : 0
     },
+    views : {
+        type : Number,
+        default : 0
+    },
+    dislikes : {
+        type : Number,
+        default : 0
+    },
     channelId : {
         type : String,
     },
     channelImage : {
         type : String 
     }, 
+    
     comments : [{
         type : mongoose.Schema.Types.ObjectId,
         ref : "comment"
-    }]
+    }],
+    time : { 
+        type : Date, 
+        default: Date.now 
+    }
 }) 
 
-module.exports = mongoose.model('videoSchema',videoSchema);
+
+
+module.exports = mongoose.model('videoSchema',videoSchema); 

@@ -6,6 +6,7 @@ const {uploads } = require("../config/cloudinaryConfig")
 
 
 
+
 //desc Signup user 
 //dest POST /api/register 
 exports.register = async (req,res,next) =>{
@@ -108,3 +109,23 @@ exports.getUser = async (req,res,next)=>{
     res.status(200).json(foundUser)
 }
 
+// verify token
+
+
+exports.verifyUserToken = (req,res,next) =>{
+    const token = req.headers["x-access-token"]
+ 
+    if(!token){
+        return next(res.json(new ErrorResponse("No token found")) )
+    }
+
+    jwt.verify(token, process.env.ACCESS_TOKEN,(err,decoded)=>{
+        if(err){
+            return res.status(200).json({auth : false, message : "invalid token"})
+        }
+        res.status(200).json({auth : true, message : "valid token"})
+       
+    })
+
+    
+}       

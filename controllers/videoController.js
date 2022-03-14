@@ -62,8 +62,28 @@ exports.getRandomVideos = async (req, res, next) => {
 exports.getVideo = async (req,res,next) =>{
     const vid = await video.findById({_id : req.params.id});
 
+    await video.findByIdAndUpdate(
+        {_id : req.params.id},
+        {$inc:{views : 1}}
+    )
+
     res.status(200).json({
         vid
     })
 
+}
+
+exports.searchVideo = async(req, res, next) => {
+
+    try{ 
+        console.log(req.query)
+        // const y = video.createIndex({title:"text"})
+        const searchedVideo = await video.find({$text : { $search : req.query.text  }})
+
+        res.status(200).json(searchedVideo);
+       
+        
+    }catch(err){
+        console.log(err.message)
+    }
 }

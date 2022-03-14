@@ -14,6 +14,9 @@ const channelRoute = require("./routes/channelRoute.js")
 const videoRoute = require("./routes/videoRoute")
 const subscriptionRoute = require("./routes/subscriptionRoute")
 const commentRoute = require("./routes/commentRoute")
+const likeRoute = require("./routes/likeRoute")
+const replyRoute = require("./routes/replyRoute")
+
 
 require("dotenv").config();
 
@@ -31,6 +34,8 @@ app.use(channelRoute);
 app.use(videoRoute);
 app.use(subscriptionRoute);
 app.use(commentRoute);
+app.use(likeRoute);
+app.use(replyRoute);
 
 const port = process.env.PORT
 

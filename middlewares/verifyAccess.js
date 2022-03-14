@@ -10,8 +10,9 @@ exports.verifyAccess = (req,res,next) =>{
 
     jwt.verify(token, process.env.ACCESS_TOKEN,(err,decoded)=>{
         if(err){
-            return next(res.json({auth : false, message : "invalid token"}))
+            return res.status(200).json({auth : false, message : "invalid token"})
         }
+        // res.status(200).json({auth : true, message : "valid token"})
         req.user_id = decoded.user_id                                 
         next()
     })

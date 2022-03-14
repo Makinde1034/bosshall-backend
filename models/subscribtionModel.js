@@ -10,7 +10,7 @@ const subscribtionSchema = new Schema({
     
     channelId : {
         type : mongoose.Schema.Types.ObjectId,
-        ref : "chanel"
+        ref : "channel"
     }
 
 })

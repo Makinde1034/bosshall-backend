@@ -51,9 +51,22 @@ exports.getVideoComments = async (req,res,next) =>{
         res.status(200).json(_comments); 
 
     }catch(err){
-
+        
         
     }
   
     
 }    
+
+
+
+
+exports.getCommentReplies = async (req,res,next) => {
+    try{
+
+
+
+    }catch(err){
+
+    }
+}

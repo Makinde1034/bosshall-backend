@@ -2,6 +2,7 @@ const channel = require("../models/channelModel.js")
 const user = require("../models/userModel")
 const { uploads } = require("../config/cloudinaryConfig.js")
 const ErrorResponse = require("../utils/errorResponse.js")
+const colors = require("colors");
 
 exports.createChannel = async (req,res,next) => {
     const { name, about, address, websiteLink } = req.body
@@ -72,7 +73,7 @@ exports.getRandomChannels = async(req, res, next) =>{
             {
                 $sample : { size : 6 }
             }
-        ]
+        ] 
     )
 
     res.status(200).json({
@@ -80,4 +81,15 @@ exports.getRandomChannels = async(req, res, next) =>{
     })
 }
 
- 
+exports.getRelatedChannelVideos = async(req, res, next) =>{
+
+    try{
+        const channelVideos = await channel.findById({_id : req.params.id}).populate("videos");
+            
+        res.status(200).json(channelVideos);
+
+    }catch(err){
+        console.log(err);
+    }
+     
+} 
