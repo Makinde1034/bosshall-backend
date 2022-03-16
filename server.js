@@ -37,7 +37,7 @@ app.use(commentRoute);
 app.use(likeRoute);
 app.use(replyRoute);
 
-const port = process.env.PORT
+const port = process.env.PORT || 7000
 
  
 mongoose.connect(uri).then(()=>{
@@ -50,25 +50,4 @@ mongoose.connect(uri).then(()=>{
 })
 
 
- 
-const multer = Multer({ 
-    storage: Multer.MemoryStorage,
-    fileSize: 8 * 1024 * 1024 // max file size 8MB
-    
-});
-
-
-
-// app.post('/upload', (req,res)=>{
-//     console.log(req.body.name) 
-//     return uploads(req.body.data).then((result)=>{ 
-//         videoModel.create({ 
-//             name : "latest video",
-//             url : result.url 
-//         }).then((newData)=>{ 
-//             console.log(newData);  
-//         }) 
-//     }) 
-//     console.log(req.files)    
-// })               
  
