@@ -31,6 +31,8 @@ exports.createSubscription = async (req,res,next) =>{
         if(subscriptionExists){ 
 
             await subscriptionExists.remove();
+            // Decrease number of subscribers
+            await Channel.findByIdAndUpdate({_id : channelId}, {$inc : { subscribers : -1 }})
             return res.status(200).json({success : true })
         }
 
@@ -39,6 +41,11 @@ exports.createSubscription = async (req,res,next) =>{
             subscriberId : req.user_id
 
         })
+
+        // increase number of subscribers
+        await Channel.findByIdAndUpdate({_id : channelId}, {$inc : { subscribers : 1 }})
+
+
 
         // create subscription notification
         const channel = await Channel.findOne({_id : channelId})

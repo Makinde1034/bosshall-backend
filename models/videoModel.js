@@ -31,6 +31,10 @@ const videoSchema = new Schema({
     channelImage : {
         type : String 
     }, 
+
+    channelName : {
+        type : String
+    },
     
     comments : [{
         type : mongoose.Schema.Types.ObjectId,
@@ -39,7 +43,7 @@ const videoSchema = new Schema({
     time : { 
         type : Date, 
         default: Date.now 
-    }
+    } 
 }) 
 
 

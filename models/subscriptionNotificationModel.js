@@ -9,6 +9,7 @@ const subscriptionNotificationModel = mongoose.Schema({
     subscriberName :{
         type : String
     },
+    
     channelName : {
         type : String
     },
@@ -16,10 +17,16 @@ const subscriptionNotificationModel = mongoose.Schema({
     channelOwner : {
         type : mongoose.Schema.Types.ObjectId,
         ref : "user"
-    },
+    }, 
+
     viewed : {
         type :Boolean,
         default : false
+    },
+
+    time : { 
+        type : Date, 
+        default: Date.now 
     }
 
 

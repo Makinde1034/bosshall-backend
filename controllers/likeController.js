@@ -9,6 +9,7 @@ const Video = require("../models/videoModel")
 //@access Authenticated users
 
 exports.likeUnlikeVideo = async (req,res,next) => {  
+
     try{
 
         const checkState = await Like.findOne({ owner : req.user_id, reciever : req.body.reciever})
@@ -47,37 +48,6 @@ exports.likeUnlikeVideo = async (req,res,next) => {
 
         }
         res.status(200).json({status: true})
-       
-
-        // const ifExists = await Like.exists({ owner : req.user_id, reciever : req.body.reciever, status : req.body.status });
-
-        // if(ifExists){
-        //     await Like.updateOne({owner : req.user_id, reciever : req.body.reciever, status : req.body.status});
-        //     // await Video.updateOne({_id : req.body.reciever}, {$inc:{likes : -1}} )
-
-        //     if(req.body.status === "liked"){
-        //         await Video.updateOne({_id : req.body.reciever}, {$inc:{likes : 1}} )
-        //     }else{
-        //         await Video.updateOne({_id : req.body.reciever}, {$inc:{likes : -1}} )
-        //         // await Like.updateOne({_id : req.body.reciever}, {status : req.body.status})
-        //     }
-        //     res.status(200).json("Video successfully Unliked")
-        // }else{
-
-        //     await Like.create({owner : req.user_id, reciever : req.body.reciever, status : req.body.status})
-
-        //     if(req.body.status === "liked"){
-                
-        //         await Video.updateOne({_id : req.body.reciever}, {$inc:{likes : 1}} )
-        //     }else{
-        //         await Video.updateOne({_id : req.body.reciever}, {$inc:{likes : -1}} )
-        //         // await Like.updateOne({_id : req.body.reciever}, {status : req.body.status})
-        //     }
-           
-           
-           
-        //     res.status(200).json("Video successfully liked")
-        // }
 
     }catch(err){
         console.log(err.message) 
@@ -95,10 +65,10 @@ exports.checkVideoLike = async (req,res,next) => {
     try{
 
         const alreadyLiked = await Like.findOne({ owner : req.user_id, reciever : req.body.reciever });
-        res.status(200).json({alreadyLiked})
+        res.status(200).json({alreadyLiked});
         
     }catch(err){
 
-        res.status(400).json({msg:"An error occured"})
+        res.status(400).json({msg:"An error occured"});
     }
 }
