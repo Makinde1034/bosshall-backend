@@ -1,6 +1,6 @@
 const user = require("../models/userModel.js")
 const jwt = require("jsonwebtoken")
-const bcrypt = require("bcrypt")
+const bcrypt = require("bcryptjs")
 const ErrorResponse = require("../utils/errorResponse.js")
 const {uploads } = require("../config/cloudinaryConfig")
 
