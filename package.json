@@ -2,7 +2,7 @@
   "name": "react-vid-backend",
   "version": "1.0.0",
   "description": "Backend sevice for video streaming platform",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
@@ -20,7 +20,7 @@
     "express-fileupload": "^1.2.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.1.7",
-    
+
     "multer": "^1.4.4",
     "nodemon": "^2.0.15"
   }
