@@ -99,3 +99,20 @@ exports.searchVideo = async(req, res, next) => {
         console.log(err.message)
     }
 }
+
+// @desc delete video
+// @api/delete/:id
+// @access private
+
+exports.deleteVideo = async(req, res, next) => {
+
+    try{
+        
+        const deleteVideo = await video.findByIdAndDelete({_id : req.params.id})
+
+        res.status(200).json({msg : "video successfully deleted"})
+
+    }catch(err){
+        res.json({msg : err})
+    }
+} 
